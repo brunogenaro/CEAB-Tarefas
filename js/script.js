@@ -25,7 +25,7 @@ jQuery(document).ready(function(){
 	
 	$('#logout').click(function(e){
 		e.preventDefault();
-		
+				
 		$.post('actions.php', {action : 'logout'}, function(data){
 			if(data == 1){
 				window.location.href = "index.php";

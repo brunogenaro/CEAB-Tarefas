@@ -32,6 +32,8 @@
     $_SESSION['user_task_username'] = false;
     unset($_SESSION['user_task_logged']);
     unset($_SESSION['user_task_username']);
+    
+    echo 1;
   }
 
   if ($action === 'insert') {

@@ -105,6 +105,7 @@
 	<!-- Datepickers -->
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="locales/bootstrap-datepicker.pt-BR.min.js" charset="UTF-8"></script>
+	<script src="js/script.js"></script>
 
 	<script>
 	$( document ).ready(function() {
