@@ -1,31 +1,31 @@
 jQuery(document).ready(function(){
-	
+
 	$('#login-form').on('submit',function(e){
 		e.preventDefault();
-		
+
 		var data_html = $(this).serialize();
-		
+
 		$.post('actions.php?action=login', data_html, function(data){
 			if(data == 1) {
 				window.location.href = "tasks.php";
 			}else{
-				
+
 				$('#login-message').html(data);
-				
+
 				$('#login-message').slideDown();
-				
+
 				setTimeout(function(){
 					$('#login-message').slideUp();
 				}, 4000);
-				
+
 			}
 		});
-		
+
 	});
-	
+
 	$('#logout').click(function(e){
 		e.preventDefault();
-				
+
 		$.post('actions.php', {action : 'logout'}, function(data){
 			if(data == 1){
 				window.location.href = "index.php";
@@ -33,10 +33,10 @@ jQuery(document).ready(function(){
 				alert(data);
 			}
 		});
-		
+
 	});
-	
-	
+
+
 	$('body').on('focus', ".datepicker", function() {
 		    $(this).datepicker({
 				format: "dd/mm/yyyy",
@@ -87,7 +87,8 @@ jQuery(document).ready(function(){
 		if ($('#task').val() && $('#deadline').val()) {
 			var task              = $('#task').val();
 			var deadline          = $('#deadline').val().split("/");
-			var deadlineFormatted = new Date(deadline[1] +'/'+ deadline[0] +'/'+ deadline[2]);
+			//var deadlineFormatted = new Date(deadline[1] +'/'+ deadline[0] +'/'+ deadline[2]);
+			var deadlineFormatted = deadline[1] +'/'+ deadline[0] +'/'+ deadline[2];
 			var to_user           = $('#to_user').val();
 			var from_user         = $('#from_user').val() || 1;
 			var action            = $('#action').val();
@@ -167,5 +168,22 @@ jQuery(document).ready(function(){
 		});
 
 	});
-	
+
+	var refreshTables = function(e) {
+		$.get('table.php', { table: 'opened' }, function(data2){
+		  $('#tasksOpened').html(data2);
+		});
+
+		$.get('table.php', { table: 'completed' }, function(data2){
+		  $('#tasksCompleted').html(data2);
+		});
+	};
+	$('#refresh').on('click', function(e){
+		refreshTables();
+	});
+
+	setInterval(function() {
+		refreshTables()
+	}, 60000);
+
 });

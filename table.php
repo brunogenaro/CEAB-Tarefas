@@ -26,7 +26,12 @@ if ($table == 'opened') { ?>
   if ($_SESSION['user_task_logged'] == 1) {
     $sql_can =  "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta ON t.to_user = ta.id_user WHERE t.status = 0 $add_search ORDER BY t.deadline ASC";
   } else {
-    $sql_can = "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta ON t.to_user = ta.id_user WHERE t.status = 0 $add_search AND t.to_user = " . $_SESSION['user_task_logged'] . " ORDER BY t.deadline ASC";
+    $sql_can = "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta
+              ON t.to_user = ta.id_user WHERE (t.status = 0 $add_search
+              AND t.to_user = " . $_SESSION['user_task_logged'] . ") OR
+              (t.status = 0 $add_search
+              AND t.from_user = " . $_SESSION['user_task_logged'] . ")
+              ORDER BY t.deadline ASC";
   }
 
   $sql_can =  mysql_query($sql_can, $conectado_ceabonline);
@@ -79,8 +84,12 @@ if ($table == 'opened') { ?>
   if ($_SESSION['user_task_logged'] == 1) {
     $sql_can =  "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta ON t.to_user = ta.id_user WHERE t.status = 1 $add_search ORDER BY t.finalized_on DESC";
   } else {
-    $sql_can = "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta ON t.to_user = ta.id_user WHERE t.status = 1 $add_search AND t.to_user = " . $_SESSION['user_task_logged'] . " ORDER BY t.finalized_on DESC";
-
+    $sql_can = "SELECT t.*, ta.name AS to_name FROM tasks t INNER JOIN tb_admin_users ta
+                ON t.to_user = ta.id_user WHERE (t.status = 1 $add_search
+                AND t.to_user = " . $_SESSION['user_task_logged'] . ") OR
+                (t.status = 1 $add_search
+                AND t.FROM_user = " . $_SESSION['user_task_logged'] . ")
+                 ORDER BY t.finalized_on DESC";
   }
   $sql_can =  mysql_query($sql_can, $conectado_ceabonline);
 

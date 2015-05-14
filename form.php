@@ -32,7 +32,7 @@
 	<label for="to_user">Para:</label>
 	<select class="form-control" name="to_user" id="to_user">
 	  <?php
-	  $sql = "SELECT * FROM tb_admin_users WHERE status = 1";
+	  $sql = "SELECT * FROM tb_admin_users WHERE status = 1 ORDER BY name ASC";
 
 		$query = mysql_query($sql, $conectado_ceabonline) or die(mysql_error());
 

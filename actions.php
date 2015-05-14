@@ -6,8 +6,8 @@
 
   if($action == 'login') {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = mysql_real_escape_string($_POST['username']);
+    $password = mysql_real_escape_string($_POST['password']);
 
     $sql = "SELECT * FROM tb_admin_users WHERE login = '$username' AND senha = '$password'";
 
@@ -32,13 +32,15 @@
     $_SESSION['user_task_username'] = false;
     unset($_SESSION['user_task_logged']);
     unset($_SESSION['user_task_username']);
-    
+
     echo 1;
   }
 
   if ($action === 'insert') {
     $task      = $_POST['task'];
+    // var_dump($_POST['deadline']);
     $deadline  = date('Y-m-d', strtotime($_POST['deadline']));
+    // var_dump($deadline);
     $to_user   = $_POST['to_user'];
     $from_user = $_POST['from_user'];
     $id_task   = $_POST['id_task'];

@@ -10,7 +10,17 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
+	<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
 
 	<title>CEAB Tarefas</title>
 
@@ -59,6 +69,9 @@
 	<div class="container-fluid">
 	  <div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
+			<button type="button" class="btn btn-primary" id="refresh">Atualizar Tarefas</button>
+			<br /><br />
+
 		  <ul class="nav nav-sidebar">
 			<li class="active"><a href="#all">Todas Tarefas <span class="sr-only">(current)</span></a></li>
 			<li><a href="#submit-form">Adicionar Tarefa</a></li>
