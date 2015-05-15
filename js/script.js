@@ -189,6 +189,14 @@ jQuery(document).ready(function(){
 		$.get('table.php', { table: 'completed' }, function(data2){
 		  $('#tasksCompleted').html(data2);
 		});
+
+		$.get('form.php',  function(data){
+			$('#formTask').html(data);
+
+			$('select').select2({
+				language: "pt-BR"
+			});
+		});
 	};
 	$('#refresh').on('click', function(e){
 		refreshTables();
