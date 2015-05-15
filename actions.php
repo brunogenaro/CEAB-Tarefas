@@ -38,17 +38,18 @@
 
   if ($action === 'insert') {
     $task      = $_POST['task'];
-    // var_dump($_POST['deadline']);
     $deadline  = date('Y-m-d', strtotime($_POST['deadline']));
-    // var_dump($deadline);
     $to_user   = $_POST['to_user'];
     $from_user = $_POST['from_user'];
     $id_task   = $_POST['id_task'];
 
-    $sql_insert = "INSERT INTO tasks (from_user, to_user, deadline, task_name, created_on, status)
-           VALUES ($from_user, $to_user, '$deadline', '$task', NOW(), 0)";
+    for ($i = 0; $i < count($to_user); $i++) {
+      $sql_insert = "INSERT INTO tasks (from_user, to_user, deadline, task_name, created_on, status)
+                 VALUES ($from_user, " . $to_user[$i] . ", '$deadline', '$task', NOW(), 0)";
 
-    $sql_start_answer = mysql_query($sql_insert, $conectado_ceabonline) or die (mysql_error());
+          $sql_start_answer = mysql_query($sql_insert, $conectado_ceabonline) or die (mysql_error());
+    }
+
 
     if ($sql_start_answer) {//success
      echo 1;

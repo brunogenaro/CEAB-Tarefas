@@ -32,6 +32,8 @@
 
 	<link id="bsdp-css" href="css/bootstrap-datepicker.css" rel="stylesheet">
 
+	<link href="css/select2.css" rel="stylesheet">
+
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -118,6 +120,11 @@
 	<!-- Datepickers -->
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="locales/bootstrap-datepicker.pt-BR.min.js" charset="UTF-8"></script>
+
+	<!-- Select2 -->
+	<script src="js/select2/select2.js"></script>
+	<script src="js/select2/pt-BR.js" charset="UTF-8"></script>
+
 	<script src="js/script.js"></script>
 
   </body>

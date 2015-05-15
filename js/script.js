@@ -37,13 +37,17 @@ jQuery(document).ready(function(){
 	});
 
 
-	$('body').on('focus', ".datepicker", function() {
+		$('body').on('focus', ".datepicker", function() {
 		    $(this).datepicker({
 				format: "dd/mm/yyyy",
 				language: "pt-BR",
 				autoclose: true,
 				todayHighlight: true
 			});
+		});
+
+		$('select').select2({
+			language: "pt-BR"
 		});
 
 		$('.nav-sidebar li').on('click', function(e) {
@@ -105,6 +109,10 @@ jQuery(document).ready(function(){
 			//reload form
 			$.get('form.php', function(data){
 				$('#formTask').html(data);
+
+				$('select').select2({
+					language: "pt-BR"
+				});
 			});
 
 	  }
@@ -138,6 +146,10 @@ jQuery(document).ready(function(){
 
 		$.get('form.php', { task_id: taskID },  function(data){
 			$('#formTask').html(data);
+
+			$('select').select2({
+				language: "pt-BR"
+			});
 		});
 
 	});

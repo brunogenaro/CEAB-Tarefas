@@ -30,7 +30,7 @@
   <input type="hidden" name="action" id="action" value="<?php echo $action; ?>" />
   <div class="form-group">
 	<label for="to_user">Para:</label>
-	<select class="form-control" name="to_user" id="to_user">
+	<select class="form-control" name="to_user" id="to_user" multiple="multiple"<?php if ($to_user) { ?> disabled<?php } ?>>
 	  <?php
 	  $sql = "SELECT * FROM tb_admin_users WHERE status = 1 ORDER BY name ASC";
 
