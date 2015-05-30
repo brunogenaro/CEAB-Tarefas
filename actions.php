@@ -62,11 +62,10 @@
   if ($action === 'edit') {
     $task      = $_POST['task'];
     $deadline  = date('Y-m-d', strtotime($_POST['deadline']));
-    $to_user   = $_POST['to_user'];
     $from_user = $_POST['from_user'];
     $id_task   = $_POST['id_task'];
 
-    $sql_update = "UPDATE tasks SET to_user = $to_user, deadline = '$deadline', task_name = '$task' WHERE id_task = $id_task";
+    $sql_update = "UPDATE tasks SET deadline = '$deadline', task_name = '$task' WHERE id_task = $id_task";
 
     $sql_updated = mysql_query($sql_update, $conectado_ceabonline) or die (mysql_error());
 
